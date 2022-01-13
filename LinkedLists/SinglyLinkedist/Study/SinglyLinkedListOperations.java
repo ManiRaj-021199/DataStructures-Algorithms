@@ -2,7 +2,6 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-
 class SinglyLinkedList
 {
 	Node head;      // Root Node
@@ -31,7 +30,9 @@ class SinglyLinkedList
 		sll.head.next = second;
 		second.next = third;
         
-        sll.reverseLinkedList();
+        // sll.insertAtGivenPosition(1, 222);
+        sll.insertAtGivenPosition(2, 333);
+        // sll.insertAtGivenPosition(2, 444);
         
         sll.printLinkedList();
 	}
@@ -101,31 +102,44 @@ class SinglyLinkedList
 	private void insertAtGivenPosition(int pos, int val)
 	{
 	    System.out.println("Insert value " + val + " at position " + pos);
-	    
-        if(!(lengthOfLinkedList() >= pos))
+        
+        Node newNode = new Node(val);
+
+        if(pos == 0)
+        {
+        	insertAtHead(val);
+        	return;
+        }
+
+        if(lengthOfLinkedList() == pos)
+        {
+            insertAtEnd(val);
+            return;
+        }
+
+        if(!(lengthOfLinkedList() > pos))
         {
             System.out.println("Index out of range.");
             return;
         }
-        
-        Node newNode = new Node(val);
-        Node prev = null;
+
         Node temp = head;
+        Node prev = temp;
         int count = 1;
         
         while(temp != null)
         {
-            if(count == pos)
-            {
-                break;
-            }
-            
-            count += 1;
-            prev = temp;
+        	prev = temp;
             temp = temp.next;
+            count += 1;
+            
+        	if(count == pos)
+        	{
+        		break;
+        	}
         }
         
-        newNode.next = temp;
+        newNode.next = prev.next;
         prev.next = newNode;
 	}
 
