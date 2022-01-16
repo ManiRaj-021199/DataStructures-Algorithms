@@ -24,15 +24,15 @@ class SinglyLinkedList
 		SinglyLinkedList sll = new SinglyLinkedList();
 
 		sll.head = new Node(1);
-		Node second = new Node(2);
-		Node third = new Node(3);
+		Node second = new Node(4);
+		Node third = new Node(2);
 		
 		sll.head.next = second;
 		second.next = third;
         
-        // sll.insertAtGivenPosition(1, 222);
-        sll.insertAtGivenPosition(2, 333);
-        // sll.insertAtGivenPosition(2, 444);
+        sll.insertAtEnd(12);
+        sll.insertAtEnd(9);
+        sll.insertAtEnd(0);
         
         sll.printLinkedList();
 	}
@@ -124,7 +124,7 @@ class SinglyLinkedList
         }
 
         Node temp = head;
-        Node prev = temp;
+        Node prev = null;
         int count = 1;
         
         while(temp != null)
@@ -133,7 +133,7 @@ class SinglyLinkedList
             temp = temp.next;
             count += 1;
             
-        	if(count == pos)
+        	if(count > pos)
         	{
         		break;
         	}
@@ -147,6 +147,12 @@ class SinglyLinkedList
     // Method used to delete a head value 
 	private void deleteAtHead()
 	{
+		if(head == null)
+		{
+			System.out.println("Head is Null");
+			return;
+		}
+
 	    System.out.println("Delete a head value.");
 	    
         head = head.next;
@@ -158,6 +164,13 @@ class SinglyLinkedList
 	{
 	    System.out.println("Delete a tail value.");
 	    
+	    if(lengthOfLinkedList() <= 1)
+	    {
+	    	head = null;
+	    	System.out.println("LinkedList is Empty");
+	    	return;
+	    }
+
         Node temp = head;
         
         while(temp.next.next != null)
@@ -181,6 +194,12 @@ class SinglyLinkedList
 	    }
 	    
 	    Node temp = head;
+
+	    if(temp.data == val)
+	    {
+	    	deleteAtHead();
+	    	return;
+	    }
 	    
         while(temp != null)
         {
@@ -199,6 +218,13 @@ class SinglyLinkedList
 	    if(!(lengthOfLinkedList() >= pos))
 	    {
 	        System.out.println("Position out of range");
+	        return;
+	    }
+
+	    if(pos == 1)
+	    {
+	    	deleteAtHead();
+	    	return;
 	    }
 	    
 	    int count = 1;
