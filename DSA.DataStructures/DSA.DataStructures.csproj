@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DSA.Common\DSA.Common.csproj" />
+  </ItemGroup>
+
 </Project>
