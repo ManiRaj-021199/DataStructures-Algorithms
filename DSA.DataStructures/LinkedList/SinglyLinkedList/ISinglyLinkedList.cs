@@ -13,7 +13,7 @@ public interface ISinglyLinkedList<T>
     /// </summary>
     /// <param name="nIndex">Index which need to fetch the content</param>
     /// <returns>Content on the required index</returns>
-    T GetByIndex(int nIndex);
+    T? GetByIndex(int nIndex);
 
     /// <summary>
     ///     Returns a head node content.

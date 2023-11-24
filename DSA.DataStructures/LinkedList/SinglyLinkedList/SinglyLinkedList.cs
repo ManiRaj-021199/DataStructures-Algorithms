@@ -14,9 +14,16 @@ public class SinglyLinkedList<T> : ISinglyLinkedList<T>
         return this.Head!.Data;
     }
 
-    public T GetByIndex(int nIndex)
+    public T? GetByIndex(int nIndex)
     {
-        throw new NotImplementedException();
+        ThrowExceptionsHelper<SinglyLinkedListNode<T>>.ThrowNullException(this.Head);
+
+        return nIndex switch
+        {
+            < 0 => throw ThrowExceptionsHelper<SinglyLinkedListNode<T>>.ThrowArgumentOutOfRangeException(),
+            0 => GetFirst(),
+            > 0 => GetValueByIndex(nIndex)
+        };
     }
 
     public T? GetLast()
@@ -90,7 +97,38 @@ public class SinglyLinkedList<T> : ISinglyLinkedList<T>
     {
         ThrowExceptionsHelper<SinglyLinkedListNode<T>>.ThrowNullException(this.Head);
 
-        return 0;
+        SinglyLinkedListNode<T>? nodeTemp = this.Head;
+        int nCount = 0;
+
+        while(nodeTemp != null)
+        {
+            nodeTemp = nodeTemp.Next;
+
+            nCount++;
+        }
+
+        return nCount;
+    }
+    #endregion
+
+    #region Privates
+    private T? GetValueByIndex(int nIndex)
+    {
+        int nCount = 0;
+        SinglyLinkedListNode<T>? nodeTemp = this.Head;
+
+        while(nodeTemp != null)
+        {
+            if(nCount == nIndex)
+            {
+                return nodeTemp.Data;
+            }
+
+            nodeTemp = nodeTemp.Next;
+            nCount++;
+        }
+
+        throw ThrowExceptionsHelper<SinglyLinkedListNode<T>>.ThrowArgumentOutOfRangeException();
     }
     #endregion
 }
