@@ -1,21 +1,12 @@
 ﻿namespace DSA.DataStructures;
 
-public class SinglyLinkedList<T>
+public class SinglyLinkedList<T> : ISinglyLinkedList<T>
 {
     #region Properties
-    /// <summary>
-    /// Head of the list.
-    /// </summary>
     private SinglyLinkedListNode<T>? Head { get; set; }
     #endregion
 
     #region Publics
-    /// <summary>
-    ///     Returns a head node content.
-    ///     Time complexity      - O(1)
-    ///     Space complexity     - O(1)
-    /// </summary>
-    /// <returns>Head node content</returns>
     public T? GetFirst()
     {
         ThrowExceptionsHelper<SinglyLinkedListNode<T>>.ThrowNullException(this.Head);
@@ -23,17 +14,11 @@ public class SinglyLinkedList<T>
         return this.Head!.Data;
     }
 
-    public T GetElementByIndex(int nIndex)
+    public T GetByIndex(int nIndex)
     {
         throw new NotImplementedException();
     }
 
-    /// <summary>
-    ///     Returns a head node content.
-    ///     Time complexity      - O(n)
-    ///     Space complexity     - O(1)
-    /// </summary>
-    /// <returns>End node content</returns>
     public T? GetLast()
     {
         ThrowExceptionsHelper<SinglyLinkedListNode<T>>.ThrowNullException(this.Head);
@@ -48,13 +33,6 @@ public class SinglyLinkedList<T>
         return nodeTemp.Data;
     }
 
-    /// <summary>
-    ///     Adding a new node at the beginning of the list.
-    ///     Time complexity      - O(1)
-    ///     Space complexity     - O(1)
-    /// </summary>
-    /// <param name="data">Content of the new node</param>
-    /// <returns>Newly added node</returns>
     public SinglyLinkedListNode<T> AddFirst(T data)
     {
         SinglyLinkedListNode<T> node = new(data, this.Head);
@@ -63,13 +41,6 @@ public class SinglyLinkedList<T>
         return node;
     }
 
-    /// <summary>
-    ///     Adding a new node at the end of the list.
-    ///     Time complexity      - O(n)
-    ///     Space complexity     - O(1)
-    /// </summary>
-    /// <param name="data">Content of the new node</param>
-    /// <returns>Newly added node</returns>
     public SinglyLinkedListNode<T> AddLast(T data)
     {
         if(this.Head is null)
@@ -90,12 +61,12 @@ public class SinglyLinkedList<T>
         return node;
     }
 
-    public bool InsertAt(int nIndex, T data)
+    public SinglyLinkedListNode<T> InsertAt(int nIndex, T data)
     {
         throw new NotImplementedException();
     }
 
-    public bool InsertAfter(T previous, T data)
+    public SinglyLinkedListNode<T> InsertAfter(T previous, T data)
     {
         throw new NotImplementedException();
     }

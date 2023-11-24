@@ -3,18 +3,29 @@
 [TestClass]
 public class SinglyLinkedListTest
 {
+    #region Properties
+    private ISinglyLinkedList<int> SinglyLinkedList { get; set; } = new SinglyLinkedList<int>();
+    #endregion
+
+    #region Initialize and Cleanup
+    [TestInitialize]
+    public void TestInitialize()
+    {
+        this.SinglyLinkedList = new SinglyLinkedList<int>();
+    }
+    #endregion
+
     #region Tests
     [TestMethod]
     public void Test_GetHeadValue()
     {
         // Arrange
-        SinglyLinkedList<int> list = new();
 
         // Act
-        _ = list.AddFirst(1);
+        _ = this.SinglyLinkedList.AddFirst(1);
 
         // Assert
-        int nValue = list.GetFirst();
+        int nValue = this.SinglyLinkedList.GetFirst();
 
         Assert.AreEqual(1, nValue);
     }
@@ -23,26 +34,24 @@ public class SinglyLinkedListTest
     public void Test_GetHeadValue_NullReferenceException()
     {
         // Arrange
-        SinglyLinkedList<int> list = new();
 
         // Act
 
         // Assert
-        Assert.ThrowsException<NullReferenceException>(() => list.GetFirst());
+        Assert.ThrowsException<NullReferenceException>(() => this.SinglyLinkedList.GetFirst());
     }
 
     [TestMethod]
     public void Test_GetTailValue()
     {
         // Arrange
-        SinglyLinkedList<int> list = new();
 
         // Act
-        _ = list.AddFirst(1);
-        _ = list.AddFirst(2);
+        _ = this.SinglyLinkedList.AddFirst(1);
+        _ = this.SinglyLinkedList.AddFirst(2);
 
         // Assert
-        int nValue = list.GetLast();
+        int nValue = this.SinglyLinkedList.GetLast();
 
         Assert.AreEqual(1, nValue);
     }
@@ -51,30 +60,28 @@ public class SinglyLinkedListTest
     public void Test_GetTailValue_NullReferenceException()
     {
         // Arrange
-        SinglyLinkedList<int> list = new();
 
         // Act
 
         // Assert
-        Assert.ThrowsException<NullReferenceException>(() => list.GetLast());
+        Assert.ThrowsException<NullReferenceException>(() => this.SinglyLinkedList.GetLast());
     }
 
     [TestMethod]
     public void Test_AddFirst()
     {
         // Arrange
-        SinglyLinkedList<int> list = new();
 
         // Act
-        _ = list.AddFirst(1);
+        _ = this.SinglyLinkedList.AddFirst(1);
 
         // Assert
-        int nValue = list.GetFirst();
+        int nValue = this.SinglyLinkedList.GetFirst();
 
         Assert.AreEqual(1, nValue);
 
-        _ = list.AddFirst(2);
-        nValue = list.GetFirst();
+        _ = this.SinglyLinkedList.AddFirst(2);
+        nValue = this.SinglyLinkedList.GetFirst();
 
         Assert.AreEqual(2, nValue);
     }
@@ -83,23 +90,22 @@ public class SinglyLinkedListTest
     public void Test_AddLast()
     {
         // Arrange
-        SinglyLinkedList<int> list = new();
 
         // Act
-        _ = list.AddLast(1);
-        _ = list.AddLast(2);
+        _ = this.SinglyLinkedList.AddLast(1);
+        _ = this.SinglyLinkedList.AddLast(2);
 
         // Assert
-        int nValue = list.GetLast();
+        int nValue = this.SinglyLinkedList.GetLast();
 
         Assert.AreEqual(2, nValue);
 
-        _ = list.AddLast(3);
-        nValue = list.GetLast();
+        _ = this.SinglyLinkedList.AddLast(3);
+        nValue = this.SinglyLinkedList.GetLast();
 
         Assert.AreEqual(3, nValue);
 
-        nValue = list.GetFirst();
+        nValue = this.SinglyLinkedList.GetFirst();
         Assert.AreEqual(1, nValue);
     }
     #endregion
