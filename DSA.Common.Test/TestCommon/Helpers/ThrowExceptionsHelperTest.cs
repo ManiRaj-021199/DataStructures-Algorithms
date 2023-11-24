@@ -24,5 +24,21 @@ public class ThrowExceptionsHelperTest
         // Act
         ThrowExceptionsHelper<string>.ThrowNullException(strValue);
     }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void Test_ThrowArgumentOutOfRangeException()
+    {
+        // Assert
+        ThrowExceptionsHelper<string>.ThrowArgumentOutOfRangeException();
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(Exception), "Value Not Available...")]
+    public void Test_ThrowValueNotAvailableException()
+    {
+        // Assert
+        ThrowExceptionsHelper<string>.ThrowValueNotAvailableException();
+    }
     #endregion
 }

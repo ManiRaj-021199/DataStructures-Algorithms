@@ -15,5 +15,23 @@ public static class ThrowExceptionsHelper<T>
             throw new NullReferenceException(nameof(data));
         }
     }
+
+    /// <summary>
+    ///     Throw index out of range exception.
+    /// </summary>
+    /// <exception cref="ArgumentOutOfRangeException">Throw ArgumentOutOfRangeException</exception>
+    public static ArgumentOutOfRangeException ThrowArgumentOutOfRangeException()
+    {
+        throw new ArgumentOutOfRangeException();
+    }
+
+    /// <summary>
+    ///     Throw content not available exception.
+    /// </summary>
+    /// <exception cref="Exception">Throw ContentNotAvailableException</exception>
+    public static Exception ThrowValueNotAvailableException()
+    {
+        throw new Exception("Value Not Available...");
+    }
     #endregion
 }
