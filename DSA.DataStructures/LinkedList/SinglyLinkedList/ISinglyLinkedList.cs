@@ -73,6 +73,13 @@ public interface ISinglyLinkedList<T>
     bool RemoveAll(T data);
 
     /// <summary>
+    ///     Returns all node data as a string format.
+    /// </summary>
+    /// <param name="cSeparator">Separator symbol for separate the node contents</param>
+    /// <returns>Returns all node data as a string format and separate the node value by using cSeparator</returns>
+    string ToString(char cSeparator);
+
+    /// <summary>
     ///     Returns a total data count available on the list.
     /// </summary>
     /// <returns>Length of the linked list</returns>

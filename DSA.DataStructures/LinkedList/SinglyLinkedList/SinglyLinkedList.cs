@@ -93,6 +93,23 @@ public class SinglyLinkedList<T> : ISinglyLinkedList<T>
         throw new NotImplementedException();
     }
 
+    public string ToString(char cSeparator)
+    {
+        ThrowExceptionsHelper<SinglyLinkedListNode<T>>.ThrowNullException(this.Head);
+
+        SinglyLinkedListNode<T>? nodeTemp = this.Head;
+        string strValue = string.Empty;
+
+        while(nodeTemp != null)
+        {
+            strValue += $"{nodeTemp.Data}{cSeparator}";
+
+            nodeTemp = nodeTemp.Next;
+        }
+
+        return strValue[..(strValue.Length - 1)];
+    }
+
     public int Count()
     {
         ThrowExceptionsHelper<SinglyLinkedListNode<T>>.ThrowNullException(this.Head);

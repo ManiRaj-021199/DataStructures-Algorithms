@@ -154,6 +154,21 @@ public class SinglyLinkedListTest
     }
 
     [TestMethod]
+    public void Test_ToString()
+    {
+        // Arrange
+        _ = this.SinglyLinkedList.AddFirst(1);
+        _ = this.SinglyLinkedList.AddFirst(2);
+        _ = this.SinglyLinkedList.AddFirst(3);
+
+        // Act
+        string strValue = this.SinglyLinkedList.ToString('-');
+
+        // Assert
+        Assert.AreEqual("3-2-1", strValue);
+    }
+
+    [TestMethod]
     public void Test_Count()
     {
         // Arrange
