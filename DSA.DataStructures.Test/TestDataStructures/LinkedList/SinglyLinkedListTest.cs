@@ -154,6 +154,36 @@ public class SinglyLinkedListTest
     }
 
     [TestMethod]
+    public void Test_Remove()
+    {
+        // Arrange
+        _ = this.SinglyLinkedList.AddFirst(1);
+        _ = this.SinglyLinkedList.AddFirst(2);
+        _ = this.SinglyLinkedList.AddFirst(3);
+
+        // Act
+        bool bIsDeleted = this.SinglyLinkedList.Remove(3);
+
+        // Assert
+        Assert.IsTrue(bIsDeleted);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(Exception), ExceptionConstants.VALUE_NOT_AVAILABLE)]
+    public void Test_Remove_ValueNotAvailable()
+    {
+        // Arrange
+        _ = this.SinglyLinkedList.AddFirst(1);
+        _ = this.SinglyLinkedList.AddFirst(2);
+        _ = this.SinglyLinkedList.AddFirst(3);
+
+        // Act
+        _ = this.SinglyLinkedList.Remove(5);
+
+        // Assert
+    }
+
+    [TestMethod]
     public void Test_ToString()
     {
         // Arrange

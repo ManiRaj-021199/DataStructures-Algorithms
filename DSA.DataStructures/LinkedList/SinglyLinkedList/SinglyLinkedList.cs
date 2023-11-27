@@ -80,7 +80,33 @@ public class SinglyLinkedList<T> : ISinglyLinkedList<T>
 
     public bool Remove(T data)
     {
-        throw new NotImplementedException();
+        ThrowExceptionsHelper<SinglyLinkedListNode<T>>.ThrowNullException(this.Head);
+        ThrowExceptionsHelper<T>.ThrowNullException(data);
+
+        SinglyLinkedListNode<T>? nodeTemp = this.Head!;
+        SinglyLinkedListNode<T>? nodePrevious = null;
+
+        while(nodeTemp != null)
+        {
+            if(nodeTemp.Data!.Equals(data))
+            {
+                if(nodePrevious is null)
+                {
+                    this.Head = nodeTemp.Next;
+                }
+                else
+                {
+                    nodePrevious.Next = nodeTemp.Next;
+                }
+
+                return true;
+            }
+
+            nodePrevious = nodeTemp;
+            nodeTemp = nodeTemp.Next;
+        }
+
+        throw ThrowExceptionsHelper<T>.ThrowValueNotAvailableException();
     }
 
     public bool RemoveAt(int nIndex)
@@ -107,7 +133,7 @@ public class SinglyLinkedList<T> : ISinglyLinkedList<T>
             nodeTemp = nodeTemp.Next;
         }
 
-        return strValue[..(strValue.Length - 1)];
+        return strValue[..^1];
     }
 
     public int Count()

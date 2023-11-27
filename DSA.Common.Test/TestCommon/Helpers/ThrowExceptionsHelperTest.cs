@@ -34,7 +34,7 @@ public class ThrowExceptionsHelperTest
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception), "Value Not Available...")]
+    [ExpectedException(typeof(Exception), ExceptionConstants.VALUE_NOT_AVAILABLE)]
     public void Test_ThrowValueNotAvailableException()
     {
         // Assert
