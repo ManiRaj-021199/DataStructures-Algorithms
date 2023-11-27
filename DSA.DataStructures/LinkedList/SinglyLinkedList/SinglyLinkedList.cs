@@ -70,7 +70,36 @@ public class SinglyLinkedList<T> : ISinglyLinkedList<T>
 
     public SinglyLinkedListNode<T> InsertAt(int nIndex, T data)
     {
-        throw new NotImplementedException();
+        if(this.Head is null) AddFirst(data);
+
+        int nCount = 0;
+        SinglyLinkedListNode<T>? nodePrevious = null;
+        SinglyLinkedListNode<T>? nodeTemp = this.Head;
+
+        while(nodeTemp != null)
+        {
+            if(nCount == nIndex)
+            {
+                SinglyLinkedListNode<T> node = new(data, nodeTemp);
+
+                if(nodePrevious is null)
+                {
+                    this.Head = node;
+                }
+                else
+                {
+                    nodePrevious.Next = node;
+                }
+
+                return node;
+            }
+
+            nodePrevious = nodeTemp;
+            nodeTemp = nodeTemp.Next;
+            nCount++;
+        }
+
+        throw ThrowExceptionsHelper<SinglyLinkedListNode<T>>.ThrowArgumentOutOfRangeException();
     }
 
     public SinglyLinkedListNode<T> InsertAfter(T previous, T data)
