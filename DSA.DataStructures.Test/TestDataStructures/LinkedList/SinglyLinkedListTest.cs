@@ -197,6 +197,49 @@ public class SinglyLinkedListTest
     }
 
     [TestMethod]
+    public void Test_InsertAfter()
+    {
+        // Arrange
+        _ = this.SinglyLinkedList.AddFirst(1);
+
+        // Act
+        _ = this.SinglyLinkedList.InsertAfter(1, 10);
+
+        // Act
+        string strValue = this.SinglyLinkedList.ToString('-');
+        Assert.AreEqual("1-10", strValue);
+    }
+
+    [TestMethod]
+    public void Test_InsertAfter_MiddlePosition()
+    {
+        // Arrange
+        _ = this.SinglyLinkedList.AddLast(1);
+        _ = this.SinglyLinkedList.AddLast(2);
+        _ = this.SinglyLinkedList.AddLast(3);
+
+        // Act
+        _ = this.SinglyLinkedList.InsertAfter(2, 22);
+
+        // Act
+        string strValue = this.SinglyLinkedList.ToString('-');
+        Assert.AreEqual("1-2-22-3", strValue);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(Exception), ExceptionConstants.VALUE_NOT_AVAILABLE)]
+    public void Test_InsertAfter_ArgumentOutOfRangeException()
+    {
+        // Arrange
+        _ = this.SinglyLinkedList.AddFirst(1);
+
+        // Act
+        _ = this.SinglyLinkedList.InsertAfter(10, 0);
+
+        // Act
+    }
+
+    [TestMethod]
     public void Test_Remove()
     {
         // Arrange

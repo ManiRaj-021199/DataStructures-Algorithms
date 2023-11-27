@@ -71,6 +71,7 @@ public class SinglyLinkedList<T> : ISinglyLinkedList<T>
     public SinglyLinkedListNode<T> InsertAt(int nIndex, T data)
     {
         if(this.Head is null) AddFirst(data);
+        ThrowExceptionsHelper<T>.ThrowNullException(data);
 
         int nCount = 0;
         SinglyLinkedListNode<T>? nodePrevious = null;
@@ -104,7 +105,26 @@ public class SinglyLinkedList<T> : ISinglyLinkedList<T>
 
     public SinglyLinkedListNode<T> InsertAfter(T previous, T data)
     {
-        throw new NotImplementedException();
+        if(this.Head is null) AddFirst(data);
+        ThrowExceptionsHelper<T>.ThrowNullException(data);
+
+        SinglyLinkedListNode<T>? nodeTemp = this.Head;
+
+        while(nodeTemp != null)
+        {
+            if(nodeTemp.Data?.Equals(previous) == true)
+            {
+                SinglyLinkedListNode<T> node = new(data, nodeTemp.Next);
+
+                nodeTemp.Next = node;
+
+                return node;
+            }
+
+            nodeTemp = nodeTemp.Next;
+        }
+
+        throw ThrowExceptionsHelper<T>.ThrowValueNotAvailableException();
     }
 
     public bool Remove(T data)
