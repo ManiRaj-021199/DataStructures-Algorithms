@@ -116,7 +116,37 @@ public class SinglyLinkedList<T> : ISinglyLinkedList<T>
 
     public bool RemoveAll(T data)
     {
-        throw new NotImplementedException();
+        ThrowExceptionsHelper<SinglyLinkedListNode<T>>.ThrowNullException(this.Head);
+        ThrowExceptionsHelper<T>.ThrowNullException(data);
+
+        SinglyLinkedListNode<T>? nodeTemp = this.Head!;
+        SinglyLinkedListNode<T>? nodePrevious = null;
+
+        bool bIsValueDeleted = false;
+
+        while(nodeTemp != null)
+        {
+            if(nodeTemp.Data!.Equals(data))
+            {
+                if(nodePrevious is null)
+                {
+                    this.Head = nodeTemp.Next;
+                }
+                else
+                {
+                    nodePrevious.Next = nodeTemp.Next;
+                }
+
+                bIsValueDeleted = true;
+            }
+
+            nodePrevious = nodeTemp;
+            nodeTemp = nodeTemp.Next;
+        }
+
+        if(bIsValueDeleted) return true;
+
+        throw ThrowExceptionsHelper<T>.ThrowValueNotAvailableException();
     }
 
     public string ToString(char cSeparator)

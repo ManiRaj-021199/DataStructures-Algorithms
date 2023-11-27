@@ -184,6 +184,40 @@ public class SinglyLinkedListTest
     }
 
     [TestMethod]
+    public void Test_RemoveAll()
+    {
+        // Arrange
+        _ = this.SinglyLinkedList.AddLast(1);
+        _ = this.SinglyLinkedList.AddLast(2);
+        _ = this.SinglyLinkedList.AddLast(3);
+        _ = this.SinglyLinkedList.AddLast(1);
+
+        // Act
+        bool bIsDeleted = this.SinglyLinkedList.RemoveAll(1);
+
+        // Assert
+        Assert.IsTrue(bIsDeleted);
+
+        string strValues = this.SinglyLinkedList.ToString('~');
+        Assert.AreEqual("2~3", strValues);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(Exception), ExceptionConstants.VALUE_NOT_AVAILABLE)]
+    public void Test_RemoveAll_ValueNotAvailable()
+    {
+        // Arrange
+        _ = this.SinglyLinkedList.AddFirst(1);
+        _ = this.SinglyLinkedList.AddFirst(2);
+        _ = this.SinglyLinkedList.AddFirst(3);
+
+        // Act
+        _ = this.SinglyLinkedList.RemoveAll(5);
+
+        // Assert
+    }
+
+    [TestMethod]
     public void Test_ToString()
     {
         // Arrange
