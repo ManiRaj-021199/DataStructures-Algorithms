@@ -111,7 +111,32 @@ public class SinglyLinkedList<T> : ISinglyLinkedList<T>
 
     public bool RemoveAt(int nIndex)
     {
-        throw new NotImplementedException();
+        int nCount = 0;
+        SinglyLinkedListNode<T>? nodeTemp = this.Head;
+        SinglyLinkedListNode<T>? nodePrevious = null;
+
+        while(nodeTemp != null)
+        {
+            if(nCount == nIndex)
+            {
+                if(nodePrevious is null)
+                {
+                    this.Head = nodeTemp.Next;
+                }
+                else
+                {
+                    nodePrevious.Next = nodeTemp.Next;
+                }
+
+                return true;
+            }
+
+            nodePrevious = nodeTemp;
+            nodeTemp = nodeTemp.Next;
+            nCount++;
+        }
+
+        throw ThrowExceptionsHelper<SinglyLinkedListNode<T>>.ThrowArgumentOutOfRangeException();
     }
 
     public bool RemoveAll(T data)

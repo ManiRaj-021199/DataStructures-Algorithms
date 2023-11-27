@@ -184,6 +184,41 @@ public class SinglyLinkedListTest
     }
 
     [TestMethod]
+    public void Test_RemoveAt()
+    {
+        // Arrange
+        _ = this.SinglyLinkedList.AddFirst(0);
+        _ = this.SinglyLinkedList.AddFirst(1);
+        _ = this.SinglyLinkedList.AddFirst(2);
+        _ = this.SinglyLinkedList.AddFirst(3);
+
+        // Act
+        _ = this.SinglyLinkedList.RemoveAt(1);
+        bool bIsDeleted = this.SinglyLinkedList.RemoveAt(0);
+
+        // Assert
+        Assert.IsTrue(bIsDeleted);
+
+        string strValue = this.SinglyLinkedList.ToString('-');
+        Assert.AreEqual("1-0", strValue);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void Test_RemoveAt_ArgumentOutOfRangeException()
+    {
+        // Arrange
+        _ = this.SinglyLinkedList.AddFirst(1);
+        _ = this.SinglyLinkedList.AddFirst(2);
+        _ = this.SinglyLinkedList.AddFirst(3);
+
+        // Act
+        _ = this.SinglyLinkedList.RemoveAt(8);
+
+        // Assert
+    }
+
+    [TestMethod]
     public void Test_RemoveAll()
     {
         // Arrange
