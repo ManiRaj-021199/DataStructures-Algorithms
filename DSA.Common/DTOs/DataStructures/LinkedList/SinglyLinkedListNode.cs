@@ -1,4 +1,4 @@
-﻿namespace DSA.DataStructures;
+﻿namespace DSA.Common;
 
 public class SinglyLinkedListNode<T>
 {
