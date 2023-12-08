@@ -94,9 +94,21 @@ public class DoublyLinkedList<T> : IDoublyLinkedList<T>
         throw new NotImplementedException();
     }
 
-    public DoublyLinkedListNode<T> InsertAfter(T previous, T data)
+    public DoublyLinkedListNode<T> InsertAfter(DoublyLinkedListNode<T> previous, T data)
     {
-        throw new NotImplementedException();
+        if(this.Tail == previous) return AddLast(data);
+
+        DoublyLinkedListNode<T> node = new(data, previous, previous.Next);
+        previous.Next = node;
+
+        if(node.Next is not null)
+        {
+            node.Next.Previous = node;
+        }
+
+        this.Count++;
+
+        return node;
     }
 
     public bool Remove(T data)

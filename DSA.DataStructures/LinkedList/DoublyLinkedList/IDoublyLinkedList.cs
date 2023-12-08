@@ -54,7 +54,7 @@ public interface IDoublyLinkedList<T>
     /// <param name="previous">Previous node data</param>
     /// <param name="data">Data need to be stored</param>
     /// <returns>Newly added node</returns>
-    DoublyLinkedListNode<T> InsertAfter(T previous, T data);
+    DoublyLinkedListNode<T> InsertAfter(DoublyLinkedListNode<T> previous, T data);
 
     /// <summary>
     ///     Remove a first node equivalent to the data provided.

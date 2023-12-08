@@ -144,9 +144,28 @@ public class DoublyLinkedListTest
 
         // Assert
         Assert.AreEqual(3, this.DoublyLinkedList.Count);
-        
+
         Assert.AreEqual(1, this.DoublyLinkedList.GetFirst());
         Assert.AreEqual(3, this.DoublyLinkedList.GetLast());
+    }
+
+    [TestMethod]
+    public void Test_InsertAfter()
+    {
+        // Arrange
+        _ = this.DoublyLinkedList.AddLast(1);
+        DoublyLinkedListNode<int> previous = this.DoublyLinkedList.AddLast(2);
+        _ = this.DoublyLinkedList.AddLast(3);
+
+        // Act
+        _ = this.DoublyLinkedList.InsertAfter(previous, 22);
+
+        // Assert
+        Assert.AreEqual(4, this.DoublyLinkedList.Count);
+
+        Assert.AreEqual(2, this.DoublyLinkedList.GetByIndex(1));
+        Assert.AreEqual(22, this.DoublyLinkedList.GetByIndex(2));
+        Assert.AreEqual(3, this.DoublyLinkedList.GetByIndex(3));
     }
     #endregion
 }
