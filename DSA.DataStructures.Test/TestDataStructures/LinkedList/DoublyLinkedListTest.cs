@@ -150,6 +150,55 @@ public class DoublyLinkedListTest
     }
 
     [TestMethod]
+    public void Test_InsertAt()
+    {
+        // Arrange
+        _ = this.DoublyLinkedList.AddLast(1);
+        _ = this.DoublyLinkedList.AddLast(2);
+        _ = this.DoublyLinkedList.AddLast(3);
+
+        // Act
+        _ = this.DoublyLinkedList.InsertAt(2, 22);
+
+        // Assert
+        Assert.AreEqual(4, this.DoublyLinkedList.Count);
+
+        Assert.AreEqual(2, this.DoublyLinkedList.GetByIndex(1));
+        Assert.AreEqual(22, this.DoublyLinkedList.GetByIndex(2));
+        Assert.AreEqual(3, this.DoublyLinkedList.GetByIndex(3));
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void Test_InsertAt_NegativeValue_ArgumentOutOfRangeException()
+    {
+        // Arrange
+        _ = this.DoublyLinkedList.AddFirst(1);
+        _ = this.DoublyLinkedList.AddFirst(2);
+        _ = this.DoublyLinkedList.AddFirst(3);
+
+        // Act
+        _ = this.DoublyLinkedList.InsertAt(-1, 22);
+
+        // Assert
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void Test_InsertAt_LengthExceeds_ArgumentOutOfRangeException()
+    {
+        // Arrange
+        _ = this.DoublyLinkedList.AddFirst(1);
+        _ = this.DoublyLinkedList.AddFirst(2);
+        _ = this.DoublyLinkedList.AddFirst(3);
+
+        // Act
+        _ = this.DoublyLinkedList.InsertAt(4, 22);
+
+        // Assert
+    }
+
+    [TestMethod]
     public void Test_InsertAfter()
     {
         // Arrange

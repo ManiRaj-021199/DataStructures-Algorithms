@@ -91,7 +91,33 @@ public class DoublyLinkedList<T> : IDoublyLinkedList<T>
 
     public DoublyLinkedListNode<T> InsertAt(int nIndex, T data)
     {
-        throw new NotImplementedException();
+        ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowNullException(this.Head);
+
+        if(nIndex < 0 || nIndex > this.Count)
+        {
+            ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowArgumentOutOfRangeException();
+        }
+
+        DoublyLinkedListNode<T>? nodeTemp = this.Head!;
+
+        for(int i = 0; i < nIndex - 1; i++)
+        {
+            nodeTemp = nodeTemp?.Next;
+        }
+
+        if(nodeTemp == null) return AddLast(data);
+
+        DoublyLinkedListNode<T> node = new(data, nodeTemp, nodeTemp.Next);
+        nodeTemp.Next = node;
+
+        if(node.Next != null)
+        {
+            node.Next.Previous = node;
+        }
+
+        this.Count++;
+
+        return node;
     }
 
     public DoublyLinkedListNode<T> InsertAfter(DoublyLinkedListNode<T> previous, T data)
