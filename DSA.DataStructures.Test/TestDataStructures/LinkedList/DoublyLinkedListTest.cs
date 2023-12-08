@@ -116,6 +116,25 @@ public class DoublyLinkedListTest
     }
 
     [TestMethod]
+    public void Test_GetData()
+    {
+        // Arrange
+        _ = this.DoublyLinkedList.AddFirst(1);
+        _ = this.DoublyLinkedList.AddFirst(2);
+        _ = this.DoublyLinkedList.AddFirst(3);
+
+        // Act
+        List<int> lstData = this.DoublyLinkedList.GetData().ToList();
+
+        // Assert
+        Assert.AreEqual(3, lstData.Count);
+
+        Assert.AreEqual(3, lstData[0]);
+        Assert.AreEqual(2, lstData[1]);
+        Assert.AreEqual(1, lstData[2]);
+    }
+
+    [TestMethod]
     public void Test_AddFirst()
     {
         // Arrange

@@ -43,6 +43,18 @@ public class DoublyLinkedList<T> : IDoublyLinkedList<T>
         return this.Tail!.Data;
     }
 
+    public IEnumerable<T?> GetData()
+    {
+        DoublyLinkedListNode<T>? nodeTemp = this.Head;
+
+        while(nodeTemp != null)
+        {
+            yield return nodeTemp.Data;
+
+            nodeTemp = nodeTemp.Next;
+        }
+    }
+
     public DoublyLinkedListNode<T> AddFirst(T data)
     {
         DoublyLinkedListNode<T> node = new(data);

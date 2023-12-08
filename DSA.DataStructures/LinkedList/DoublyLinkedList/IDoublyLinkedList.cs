@@ -27,6 +27,12 @@ public interface IDoublyLinkedList<T>
     T? GetLast();
 
     /// <summary>
+    ///     Returns a head node content.
+    /// </summary>
+    /// <returns>End node content</returns>
+    IEnumerable<T?> GetData();
+
+    /// <summary>
     ///     Adding a new node at the beginning of the list.
     /// </summary>
     /// <param name="data">Content of the new node</param>
