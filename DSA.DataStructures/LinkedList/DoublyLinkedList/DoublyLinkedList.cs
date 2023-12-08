@@ -68,7 +68,25 @@ public class DoublyLinkedList<T> : IDoublyLinkedList<T>
 
     public DoublyLinkedListNode<T> AddLast(T data)
     {
-        throw new NotImplementedException();
+        DoublyLinkedListNode<T> node = new(data);
+
+        if(this.Head is null)
+        {
+            this.Head = node;
+            this.Tail = node;
+            this.Count = 1;
+        }
+        else
+        {
+            node.Previous = this.Tail;
+            this.Tail!.Next = node;
+
+            this.Tail = node;
+
+            this.Count++;
+        }
+
+        return node;
     }
 
     public DoublyLinkedListNode<T> InsertAt(int nIndex, T data)
