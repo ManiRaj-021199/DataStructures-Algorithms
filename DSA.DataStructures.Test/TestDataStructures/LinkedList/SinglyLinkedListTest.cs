@@ -227,7 +227,7 @@ public class SinglyLinkedListTest
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception), ExceptionConstants.VALUE_NOT_AVAILABLE)]
+    [ExpectedException(typeof(Exception), ExceptionMessages.VALUE_NOT_AVAILABLE)]
     public void Test_InsertAfter_ArgumentOutOfRangeException()
     {
         // Arrange
@@ -255,7 +255,7 @@ public class SinglyLinkedListTest
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception), ExceptionConstants.VALUE_NOT_AVAILABLE)]
+    [ExpectedException(typeof(Exception), ExceptionMessages.VALUE_NOT_AVAILABLE)]
     public void Test_Remove_ValueNotAvailable()
     {
         // Arrange
@@ -324,7 +324,7 @@ public class SinglyLinkedListTest
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception), ExceptionConstants.VALUE_NOT_AVAILABLE)]
+    [ExpectedException(typeof(Exception), ExceptionMessages.VALUE_NOT_AVAILABLE)]
     public void Test_RemoveAll_ValueNotAvailable()
     {
         // Arrange

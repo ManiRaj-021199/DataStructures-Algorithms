@@ -2,25 +2,68 @@
 
 public class DoublyLinkedList<T> : IDoublyLinkedList<T>
 {
+    #region Properties
+    public int Count { get; set; }
+
+    private DoublyLinkedListNode<T>? Head { get; set; }
+    private DoublyLinkedListNode<T>? Tail { get; set; }
+    #endregion
+
     #region Publics
     public T? GetFirst()
     {
-        throw new NotImplementedException();
+        ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowNullException(this.Head);
+
+        return this.Head!.Data;
     }
 
     public T? GetByIndex(int nIndex)
     {
-        throw new NotImplementedException();
+        ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowNullException(this.Head);
+
+        if(nIndex < 0 || nIndex >= this.Count)
+        {
+            ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowArgumentOutOfRangeException();
+        }
+
+        DoublyLinkedListNode<T>? nodeTemp = this.Head!;
+
+        for(int i = 0; i < nIndex; i++)
+        {
+            nodeTemp = nodeTemp?.Next;
+        }
+
+        return nodeTemp!.Data;
     }
 
     public T? GetLast()
     {
-        throw new NotImplementedException();
+        ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowNullException(this.Tail);
+
+        return this.Tail!.Data;
     }
 
     public DoublyLinkedListNode<T> AddFirst(T data)
     {
-        throw new NotImplementedException();
+        DoublyLinkedListNode<T> node = new(data);
+
+        if(this.Head is null)
+        {
+            this.Head = node;
+            this.Tail = node;
+            this.Count = 1;
+        }
+        else
+        {
+            this.Head.Previous = node;
+            node.Next = this.Head;
+
+            this.Head = node;
+
+            this.Count++;
+        }
+
+        return node;
     }
 
     public DoublyLinkedListNode<T> AddLast(T data)
@@ -58,7 +101,7 @@ public class DoublyLinkedList<T> : IDoublyLinkedList<T>
         throw new NotImplementedException();
     }
 
-    public int Count()
+    public void Reverse()
     {
         throw new NotImplementedException();
     }

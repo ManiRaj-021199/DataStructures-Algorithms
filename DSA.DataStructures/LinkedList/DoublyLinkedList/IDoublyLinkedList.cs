@@ -3,6 +3,11 @@
 public interface IDoublyLinkedList<T>
 {
     /// <summary>
+    ///     Length of the linked list
+    /// </summary>
+    int Count { get; }
+
+    /// <summary>
     ///     Returns a head node content.
     /// </summary>
     /// <returns>Head node content</returns>
@@ -80,8 +85,7 @@ public interface IDoublyLinkedList<T>
     string ToString(char cSeparator);
 
     /// <summary>
-    ///     Returns a total data count available on the list.
+    ///     Reverse the list.
     /// </summary>
-    /// <returns>Length of the linked list</returns>
-    int Count();
+    void Reverse();
 }
