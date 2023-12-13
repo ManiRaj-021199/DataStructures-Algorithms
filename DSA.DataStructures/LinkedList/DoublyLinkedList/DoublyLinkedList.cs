@@ -149,7 +149,7 @@ public class DoublyLinkedList<T> : IDoublyLinkedList<T>
         return node;
     }
 
-    public DoublyLinkedListNode<T> Find(T data)
+    public DoublyLinkedListNode<T>? Find(T data)
     {
         DoublyLinkedListNode<T>? nodeTemp = this.Head;
 
@@ -165,7 +165,7 @@ public class DoublyLinkedList<T> : IDoublyLinkedList<T>
             nodeTemp = nodeTemp.Next;
         }
         
-        throw ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowValueNotAvailableException();
+        return null;
     }
 
     public bool Remove(T data)

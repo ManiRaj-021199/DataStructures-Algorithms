@@ -67,7 +67,7 @@ public interface IDoublyLinkedList<T>
     /// </summary>
     /// <param name="data">data need to find</param>
     /// <returns>first node equivalent to the data provided</returns>
-    DoublyLinkedListNode<T> Find(T data);
+    DoublyLinkedListNode<T>? Find(T data);
 
     /// <summary>
     ///     Remove a first node equivalent to the data provided.

@@ -253,7 +253,6 @@ public class DoublyLinkedListTest
     }
 
     [TestMethod]
-    [ExpectedException(typeof(Exception), ExceptionMessages.VALUE_NOT_AVAILABLE)]
     public void Test_Find_ValueNotAvailableException()
     {
         // Arrange
@@ -262,9 +261,10 @@ public class DoublyLinkedListTest
         _ = this.DoublyLinkedList.AddLast(3);
 
         // Act
-        _ = this.DoublyLinkedList.Find(22);
+        DoublyLinkedListNode<int>? node = this.DoublyLinkedList.Find(22);
 
         // Assert
+        Assert.IsNull(node);
     }
     #endregion
 }
