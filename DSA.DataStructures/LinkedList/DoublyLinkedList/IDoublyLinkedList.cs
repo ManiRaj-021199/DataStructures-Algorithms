@@ -63,6 +63,13 @@ public interface IDoublyLinkedList<T>
     DoublyLinkedListNode<T> InsertAfter(DoublyLinkedListNode<T> previous, T data);
 
     /// <summary>
+    ///    Find the first node equivalent to the data provided.
+    /// </summary>
+    /// <param name="data">data need to find</param>
+    /// <returns>first node equivalent to the data provided</returns>
+    DoublyLinkedListNode<T> Find(T data);
+
+    /// <summary>
     ///     Remove a first node equivalent to the data provided.
     /// </summary>
     /// <param name="data">Data need to removed</param>

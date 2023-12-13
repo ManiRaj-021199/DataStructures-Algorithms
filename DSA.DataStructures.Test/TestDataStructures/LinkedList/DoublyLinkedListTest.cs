@@ -235,5 +235,36 @@ public class DoublyLinkedListTest
         Assert.AreEqual(22, this.DoublyLinkedList.GetByIndex(2));
         Assert.AreEqual(3, this.DoublyLinkedList.GetByIndex(3));
     }
+
+    [TestMethod]
+    public void Test_Find()
+    {
+        // Arrange
+        _ = this.DoublyLinkedList.AddLast(1);
+        _ = this.DoublyLinkedList.AddLast(2);
+        _ = this.DoublyLinkedList.AddLast(3);
+
+        // Act
+        DoublyLinkedListNode<int> node = this.DoublyLinkedList.Find(2);
+
+        // Assert
+        Assert.IsNotNull(node);
+        Assert.AreEqual(2, node.Data);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(Exception), ExceptionMessages.VALUE_NOT_AVAILABLE)]
+    public void Test_Find_ValueNotAvailableException()
+    {
+        // Arrange
+        _ = this.DoublyLinkedList.AddLast(1);
+        _ = this.DoublyLinkedList.AddLast(2);
+        _ = this.DoublyLinkedList.AddLast(3);
+
+        // Act
+        _ = this.DoublyLinkedList.Find(22);
+
+        // Assert
+    }
     #endregion
 }

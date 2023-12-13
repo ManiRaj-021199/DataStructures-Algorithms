@@ -149,6 +149,25 @@ public class DoublyLinkedList<T> : IDoublyLinkedList<T>
         return node;
     }
 
+    public DoublyLinkedListNode<T> Find(T data)
+    {
+        DoublyLinkedListNode<T>? nodeTemp = this.Head;
+
+        while(nodeTemp != null)
+        {
+            T? value = nodeTemp.Data;
+
+            if((value is null && data is null) || (value is not null && value.Equals(data)))
+            {
+                return nodeTemp;
+            }
+
+            nodeTemp = nodeTemp.Next;
+        }
+        
+        throw ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowValueNotAvailableException();
+    }
+
     public bool Remove(T data)
     {
         throw new NotImplementedException();
