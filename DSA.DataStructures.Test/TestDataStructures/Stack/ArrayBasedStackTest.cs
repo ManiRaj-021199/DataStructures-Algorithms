@@ -36,8 +36,28 @@ public class ArrayBasedStackTest
     }
 
     [TestMethod]
-    public void Test_IsEmpty_Success()
+    public void Test_IsEmpty_Success_EmptyStack()
     {
+        // Arrange
+
+        // Act
+        bool bIsEmpty = this.ArrayBasedStack.IsEmpty();
+
+        // Assert
+        Assert.IsTrue(bIsEmpty);
+    }
+
+    [TestMethod]
+    public void Test_IsEmpty_Success_NonEmptyStack()
+    {
+        // Arrange
+        this.ArrayBasedStack.Push(1);
+
+        // Act
+        bool bIsEmpty = this.ArrayBasedStack.IsEmpty();
+
+        // Assert
+        Assert.IsFalse(bIsEmpty);
     }
 
     [TestMethod]

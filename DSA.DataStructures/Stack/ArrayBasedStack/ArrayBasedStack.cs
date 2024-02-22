@@ -31,7 +31,7 @@ public class ArrayBasedStack<T> : IArrayBasedStack<T>
 
     public bool IsEmpty()
     {
-        throw new NotImplementedException();
+        return nLength == 0;
     }
 
     public T Pop()
