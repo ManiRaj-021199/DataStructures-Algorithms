@@ -31,7 +31,7 @@ public static class ThrowExceptionsHelper<T>
     /// <exception cref="Exception">Throw ContentNotAvailableException</exception>
     public static Exception ThrowValueNotAvailableException()
     {
-        throw new Exception(ExceptionConstants.VALUE_NOT_AVAILABLE);
+        throw new Exception(ExceptionMessages.VALUE_NOT_AVAILABLE);
     }
     #endregion
 }
