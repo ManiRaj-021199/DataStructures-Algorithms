@@ -3,7 +3,7 @@
 public class DoublyLinkedList<T> : IDoublyLinkedList<T>
 {
     #region Properties
-    public int Count { get; set; }
+    public int Count { get; private set; }
 
     private DoublyLinkedListNode<T>? Head { get; set; }
     private DoublyLinkedListNode<T>? Tail { get; set; }
@@ -41,6 +41,25 @@ public class DoublyLinkedList<T> : IDoublyLinkedList<T>
         ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowNullException(this.Tail);
 
         return this.Tail!.Data;
+    }
+
+    public DoublyLinkedListNode<T>? GetNodeByIndex(int nIndex)
+    {
+        ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowNullException(this.Head);
+
+        if(nIndex < 0 || nIndex >= this.Count)
+        {
+            ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowArgumentOutOfRangeException();
+        }
+
+        DoublyLinkedListNode<T>? nodeTemp = this.Head!;
+
+        for(int i = 0; i < nIndex; i++)
+        {
+            nodeTemp = nodeTemp?.Next;
+        }
+
+        return nodeTemp;
     }
 
     public IEnumerable<T?> GetData()
@@ -168,29 +187,169 @@ public class DoublyLinkedList<T> : IDoublyLinkedList<T>
         return null;
     }
 
-    public bool Remove(T data)
+    public void RemoveHead()
     {
-        throw new NotImplementedException();
+        if(this.Head is null)
+        {
+            throw ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowValueNotAvailableException();
+        }
+
+        this.Head = this.Head.Next;
+
+        if(this.Head is not null)
+        {
+            this.Head.Previous = null;
+            this.Count--;
+
+            return;
+        }
+
+        this.Tail = null;
+        this.Count = 0;
     }
 
-    public bool RemoveAt(int nIndex)
+    public void RemoveTail()
     {
-        throw new NotImplementedException();
+        if(this.Tail is null)
+        {
+            throw ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowValueNotAvailableException();
+        }
+
+        this.Tail = this.Tail.Previous;
+
+        if(this.Tail is not null)
+        {
+            this.Tail.Next = null;
+            this.Count--;
+
+            return;
+        }
+
+        this.Head = null;
+        this.Count = 0;
     }
 
-    public bool RemoveAll(T data)
+    public void Remove(T data)
     {
-        throw new NotImplementedException();
+        DoublyLinkedListNode<T>? node = Find(data);
+
+        if(node is not null)
+        {
+            RemoveNode(node);
+        }
+
+        ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowNullException(node);
+    }
+
+    public void RemoveNode(DoublyLinkedListNode<T> node)
+    {
+        if(node == this.Head)
+        {
+            RemoveHead();
+        }
+        else if(node == this.Tail)
+        {
+            RemoveTail();
+        }
+        else if(node.Previous is null || node.Next is null)
+        {
+            ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowNullException(node.Previous);
+            ThrowExceptionsHelper<DoublyLinkedListNode<T>>.ThrowNullException(node.Next);
+        }
+        else
+        {
+            node.Previous!.Next = node.Next;
+            node.Next!.Previous = node.Previous;
+
+            this.Count--;
+        }
+    }
+
+    public void RemoveAt(int nIndex)
+    {
+        DoublyLinkedListNode<T>? node = GetNodeByIndex(nIndex);
+
+        if(node is not null)
+        {
+            RemoveNode(node);
+        }
+    }
+
+    public void RemoveAll(T data)
+    {
+        DoublyLinkedListNode<T>? node = this.Head;
+
+        while(node is not null)
+        {
+            if(node.Data is not null && node.Data.Equals(data))
+            {
+                RemoveNode(node);
+            }
+
+            node = node.Next;
+        }
     }
 
     public string ToString(char cSeparator)
     {
-        throw new NotImplementedException();
+        string strResult = string.Empty;
+
+        DoublyLinkedListNode<T>? nodeTemp = this.Head;
+
+        while(nodeTemp is not null)
+        {
+            strResult += nodeTemp.Data + cSeparator.ToString();
+
+            nodeTemp = nodeTemp.Next;
+        }
+
+        return strResult;
     }
 
     public void Reverse()
     {
-        throw new NotImplementedException();
+        DoublyLinkedListNode<T>? nodeTemp = this.Head;
+        DoublyLinkedListNode<T>? nodePrev = null;
+
+        while(nodeTemp is not null)
+        {
+            nodePrev = nodeTemp.Previous;
+
+            nodeTemp.Previous = nodeTemp.Next;
+            nodeTemp.Next = nodePrev;
+            nodeTemp = nodeTemp.Previous;
+        }
+
+        this.Tail = this.Head;
+
+        if(nodePrev is not null)
+        {
+            this.Head = nodePrev.Previous;
+        }
+    }
+
+    public int IndexOf(T data)
+    {
+        DoublyLinkedListNode<T>? nodeTemp = this.Head;
+        var nIndex = 0;
+
+        while(nodeTemp is not null)
+        {
+            if(nodeTemp.Data is not null && nodeTemp.Data.Equals(data))
+            {
+                return nIndex;
+            }
+
+            nodeTemp = nodeTemp.Next;
+            nIndex++;
+        }
+
+        return -1;
+    }
+
+    public bool Contains(T data)
+    {
+        return IndexOf(data) != -1;
     }
     #endregion
 }

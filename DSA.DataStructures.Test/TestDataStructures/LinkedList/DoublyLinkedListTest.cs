@@ -266,5 +266,99 @@ public class DoublyLinkedListTest
         // Assert
         Assert.IsNull(node);
     }
+
+    [TestMethod]
+    public void Test_RemoveHead()
+    {
+        // Arrange
+        _ = this.DoublyLinkedList.AddLast(1);
+        _ = this.DoublyLinkedList.AddLast(2);
+        _ = this.DoublyLinkedList.AddLast(3);
+
+        // Act
+        this.DoublyLinkedList.RemoveHead();
+
+        // Assert
+        Assert.AreEqual(2, this.DoublyLinkedList.Count);
+        Assert.AreEqual(2, this.DoublyLinkedList.GetFirst());
+        Assert.AreEqual(3, this.DoublyLinkedList.GetLast());
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(Exception), ExceptionMessages.VALUE_NOT_AVAILABLE)]
+    public void Test_RemoveHead_NullReferenceException()
+    {
+        // Arrange
+
+        // Act
+
+        // Assert
+        this.DoublyLinkedList.RemoveHead();
+    }
+
+    [TestMethod]
+    public void Test_RemoveAt_Success()
+    {
+        // Arrange
+        _ = this.DoublyLinkedList.AddLast(1);
+        _ = this.DoublyLinkedList.AddLast(2);
+        _ = this.DoublyLinkedList.AddLast(3);
+
+        // Act
+        this.DoublyLinkedList.RemoveAt(1);
+
+        // Assert
+        Assert.AreEqual(2, this.DoublyLinkedList.Count);
+        Assert.AreEqual(1, this.DoublyLinkedList.GetFirst());
+        Assert.AreEqual(3, this.DoublyLinkedList.GetLast());
+    }
+
+    [TestMethod]
+    public void Test_RemoveAt_Head_Success()
+    {
+        // Arrange
+        _ = this.DoublyLinkedList.AddLast(1);
+        _ = this.DoublyLinkedList.AddLast(2);
+
+        // Act
+        this.DoublyLinkedList.RemoveAt(0);
+
+        // Assert
+        Assert.AreEqual(1, this.DoublyLinkedList.Count);
+        Assert.AreEqual(2, this.DoublyLinkedList.GetFirst());
+        Assert.AreEqual(2, this.DoublyLinkedList.GetLast());
+    }
+
+    [TestMethod]
+    public void Test_RemoveAt_Tail_Success()
+    {
+        // Arrange
+        _ = this.DoublyLinkedList.AddLast(1);
+        _ = this.DoublyLinkedList.AddLast(2);
+
+        // Act
+        this.DoublyLinkedList.RemoveAt(1);
+
+        // Assert
+        Assert.AreEqual(1, this.DoublyLinkedList.Count);
+        Assert.AreEqual(1, this.DoublyLinkedList.GetFirst());
+        Assert.AreEqual(1, this.DoublyLinkedList.GetLast());
+    }
+
+    [TestMethod]
+    public void Test_RemoveAt_LengthExceeds_Success()
+    {
+        // Arrange
+        _ = this.DoublyLinkedList.AddLast(1);
+        _ = this.DoublyLinkedList.AddLast(2);
+
+        // Act
+        this.DoublyLinkedList.RemoveAt(2);
+
+        // Assert
+        Assert.AreEqual(2, this.DoublyLinkedList.Count);
+        Assert.AreEqual(1, this.DoublyLinkedList.GetFirst());
+        Assert.AreEqual(2, this.DoublyLinkedList.GetLast());
+    }
     #endregion
 }

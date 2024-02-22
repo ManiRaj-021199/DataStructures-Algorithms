@@ -25,6 +25,13 @@ public interface IDoublyLinkedList<T>
     /// </summary>
     /// <returns>End node content</returns>
     T? GetLast();
+    
+    /// <summary>
+    ///     Return a node by index.
+    /// </summary>
+    /// <param name="nIndex">Index which need to fetch the content</param>
+    /// <returns>Content on the required index</returns>
+    DoublyLinkedListNode<T>? GetNodeByIndex(int nIndex);
 
     /// <summary>
     ///     Returns a head node content.
@@ -70,25 +77,41 @@ public interface IDoublyLinkedList<T>
     DoublyLinkedListNode<T>? Find(T data);
 
     /// <summary>
+    ///     Remove the first node from the list.
+    /// </summary>
+    void RemoveHead();
+
+    /// <summary>
+    ///     Remove the last node from the list.
+    /// </summary>
+    void RemoveTail();
+
+    /// <summary>
     ///     Remove a first node equivalent to the data provided.
     /// </summary>
     /// <param name="data">Data need to removed</param>
     /// <returns>Status of the operation, If the data was removed it is true else false</returns>
-    bool Remove(T data);
+    void Remove(T data);
+
+    /// <summary>
+    ///     Remove the given node from the list.
+    /// </summary>
+    /// <param name="node">Node need to remove from the list.</param>
+    void RemoveNode(DoublyLinkedListNode<T> node);
 
     /// <summary>
     ///     Remove the node which is on the given index.
     /// </summary>
     /// <param name="nIndex">Index need to removed from the list</param>
     /// <returns>Status of the operation, If the data was removed it is true else false</returns>
-    bool RemoveAt(int nIndex);
+    void RemoveAt(int nIndex);
 
     /// <summary>
     ///     Remove all the node equivalent to the data provided.
     /// </summary>
     /// <param name="data">Data need to removed</param>
     /// <returns>Status of the operation, If the data was removed it is true else false</returns>
-    bool RemoveAll(T data);
+    void RemoveAll(T data);
 
     /// <summary>
     ///     Returns all node data as a string format.
@@ -101,4 +124,18 @@ public interface IDoublyLinkedList<T>
     ///     Reverse the list.
     /// </summary>
     void Reverse();
+
+    /// <summary>
+    ///     Index of the data in the list.
+    /// </summary>
+    /// <param name="data">Data to look for.</param>
+    /// <returns>Returns the index of the node if it is found else -1.</returns>
+    int IndexOf(T data);
+
+    /// <summary>
+    ///     Check whether the list contains the data or not.
+    /// </summary>
+    /// <param name="data">Data to look for.</param>
+    /// <returns>Return true if data is in the list else false.</returns>
+    bool Contains(T data);
 }
