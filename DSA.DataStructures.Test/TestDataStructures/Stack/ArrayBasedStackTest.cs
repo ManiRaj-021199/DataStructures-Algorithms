@@ -63,6 +63,28 @@ public class ArrayBasedStackTest
     [TestMethod]
     public void Test_Pop_Success()
     {
+        // Arrange
+        this.ArrayBasedStack.Push(1);
+        this.ArrayBasedStack.Push(2);
+
+        // Act
+        int nValue = this.ArrayBasedStack.Pop();
+
+        // Assert
+        Assert.AreEqual(2, nValue);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void Test_Pop_Success_OutOfRangeException()
+    {
+        // Arrange
+
+        // Act
+        int nValue = this.ArrayBasedStack.Pop();
+
+        // Assert
+        Assert.AreEqual(2, nValue);
     }
 
     [TestMethod]

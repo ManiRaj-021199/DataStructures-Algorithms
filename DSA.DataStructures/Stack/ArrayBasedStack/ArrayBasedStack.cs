@@ -36,7 +36,17 @@ public class ArrayBasedStack<T> : IArrayBasedStack<T>
 
     public T Pop()
     {
-        throw new NotImplementedException();
+        if(nTop < 0)
+        {
+            throw ThrowExceptionsHelper<T>.ThrowArgumentOutOfRangeException();
+        }
+
+        T data = this.Stack[nTop];
+        this.Stack[nTop] = default!;
+
+        nTop--;
+
+        return data;
     }
 
     public T Top()
