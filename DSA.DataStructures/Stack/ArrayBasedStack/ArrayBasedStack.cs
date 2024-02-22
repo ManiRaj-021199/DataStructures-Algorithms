@@ -29,19 +29,24 @@ public class ArrayBasedStack<T> : IArrayBasedStack<T>
         this.Stack[nTop] = data;
     }
 
-    public void Pop()
+    public bool IsEmpty()
     {
         throw new NotImplementedException();
     }
 
-    public bool IsEmpty()
+    public T Pop()
     {
         throw new NotImplementedException();
     }
 
     public T Top()
     {
-        throw new NotImplementedException();
+        if(nTop < 0)
+        {
+            throw ThrowExceptionsHelper<T>.ThrowArgumentOutOfRangeException();
+        }
+
+        return this.Stack[nTop];
     }
     #endregion
 

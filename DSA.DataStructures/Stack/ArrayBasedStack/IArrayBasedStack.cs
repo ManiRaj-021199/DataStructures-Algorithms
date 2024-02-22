@@ -9,16 +9,16 @@ public interface IArrayBasedStack<T>
     void Push(T data);
 
     /// <summary>
-    ///     Removes the top most element from the stack.
-    /// </summary>
-    void Pop();
-
-    /// <summary>
     ///     Checks weather the stack is empty.
     /// </summary>
     /// <returns>True if the stack is empty else False</returns>
     bool IsEmpty();
 
+    /// <summary>
+    ///     Removes the top most element from the stack.
+    /// </summary>
+    T Pop();
+    
     /// <summary>
     ///     Return the top most element of the stack.
     /// </summary>
