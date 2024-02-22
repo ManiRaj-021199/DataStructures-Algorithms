@@ -2,10 +2,31 @@
 
 public class ArrayBasedStack<T> : IArrayBasedStack<T>
 {
+    #region Constants
+    // Array growing count
+    private const int BOUND = 5;
+    #endregion
+
+    #region Fields
+    public int nTop = -1;
+    public int nLength;
+    #endregion
+
+    #region Properties
+    private T[] Stack { get; set; } = null!;
+    #endregion
+
     #region Publics
     public void Push(T data)
     {
-        throw new NotImplementedException();
+        if(nTop == nLength - 1)
+        {
+            this.Stack = ExtendStack();
+        }
+
+        nTop += 1;
+
+        this.Stack[nTop] = data;
     }
 
     public void Pop()
@@ -21,6 +42,23 @@ public class ArrayBasedStack<T> : IArrayBasedStack<T>
     public T Top()
     {
         throw new NotImplementedException();
+    }
+    #endregion
+
+    #region Privates
+    private T[] ExtendStack()
+    {
+        T[] stackNew = new T[nLength + BOUND];
+
+        // Copy the old stack data to new stack
+        for(int i = 0; i < nLength; i++)
+        {
+            stackNew[i] = this.Stack[i];
+        }
+
+        nLength += BOUND;
+
+        return stackNew;
     }
     #endregion
 }

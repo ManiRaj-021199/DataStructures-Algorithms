@@ -19,6 +19,15 @@ public class ArrayBasedStackTest
     [TestMethod]
     public void Test_Push()
     {
+        // Arrange
+
+        // Act
+        this.ArrayBasedStack.Push(1);
+        this.ArrayBasedStack.Push(2);
+        this.ArrayBasedStack.Push(3);
+        this.ArrayBasedStack.Push(4);
+        this.ArrayBasedStack.Push(5);
+        this.ArrayBasedStack.Push(6);
     }
 
     [TestMethod]

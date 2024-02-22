@@ -346,6 +346,7 @@ public class DoublyLinkedListTest
     }
 
     [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void Test_RemoveAt_LengthExceeds_Success()
     {
         // Arrange
