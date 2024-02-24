@@ -41,12 +41,17 @@ public class ArrayBasedQueueTest
     {
         // Arrange
         this.ArrayBasedQueue.Enqueue(1);
+        this.ArrayBasedQueue.Enqueue(2);
+        this.ArrayBasedQueue.Enqueue(3);
+        this.ArrayBasedQueue.Enqueue(4);
 
         // Act
-        int nLast = this.ArrayBasedQueue.Dequeue();
+        int nFirst = this.ArrayBasedQueue.Dequeue();
+        int nLast = this.ArrayBasedQueue.Last();
 
         // Assert
-        Assert.AreEqual(1, nLast);
+        Assert.AreEqual(1, nFirst);
+        Assert.AreEqual(4, nLast);
     }
 
     [TestMethod]

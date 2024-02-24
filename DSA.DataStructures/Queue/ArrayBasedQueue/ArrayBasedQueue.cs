@@ -31,7 +31,22 @@ public class ArrayBasedQueue<T> : IArrayBasedQueue<T>
 
     public T Dequeue()
     {
-        throw new NotImplementedException();
+        if (nLength == 0)
+        {
+            throw ThrowExceptionsHelper<T>.ThrowArgumentOutOfRangeException();
+        }
+
+        T first = First();
+
+        for(int i = 0; i < nRearIndex; i++)
+        {
+            this.Queue[i] = this.Queue[i + 1];
+        }
+
+        this.Queue[nRearIndex] = default!;
+        nRearIndex--;
+
+        return first;
     }
 
     public T First()
