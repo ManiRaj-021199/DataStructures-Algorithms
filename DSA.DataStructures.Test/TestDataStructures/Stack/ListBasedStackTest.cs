@@ -114,5 +114,37 @@ public class ListBasedStackTest
 
         // Assert
     }
+
+    [TestMethod]
+    public void Test_Length_Success_Equal()
+    {
+        // Arrange
+        this.ListBasedStack.Push(1);
+        this.ListBasedStack.Push(2);
+        this.ListBasedStack.Push(3);
+        this.ListBasedStack.Push(4);
+
+        // Act
+        int nLength = this.ListBasedStack.Length();
+
+        // Assert
+        Assert.AreEqual(4, nLength);
+    }
+
+    [TestMethod]
+    public void Test_Length_Success_NotEqual()
+    {
+        // Arrange
+        this.ListBasedStack.Push(1);
+        this.ListBasedStack.Push(2);
+        this.ListBasedStack.Push(3);
+        this.ListBasedStack.Push(4);
+
+        // Act
+        int nLength = this.ListBasedStack.Length();
+
+        // Assert
+        Assert.AreNotEqual(3, nLength);
+    }
     #endregion
 }

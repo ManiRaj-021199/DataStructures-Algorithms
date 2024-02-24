@@ -114,5 +114,37 @@ public class QueueBasedStackTest
 
         // Assert
     }
+
+    [TestMethod]
+    public void Test_Length_Success_Equal()
+    {
+        // Arrange
+        this.QueueBasedStack.Push(1);
+        this.QueueBasedStack.Push(2);
+        this.QueueBasedStack.Push(3);
+        this.QueueBasedStack.Push(4);
+
+        // Act
+        int nLength = this.QueueBasedStack.Length();
+
+        // Assert
+        Assert.AreEqual(4, nLength);
+    }
+
+    [TestMethod]
+    public void Test_Length_Success_NotEqual()
+    {
+        // Arrange
+        this.QueueBasedStack.Push(1);
+        this.QueueBasedStack.Push(2);
+        this.QueueBasedStack.Push(3);
+        this.QueueBasedStack.Push(4);
+
+        // Act
+        int nLength = this.QueueBasedStack.Length();
+
+        // Assert
+        Assert.AreNotEqual(3, nLength);
+    }
     #endregion
 }

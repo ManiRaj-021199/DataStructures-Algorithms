@@ -45,5 +45,10 @@ public class QueueBasedStack<T> : IStackBase<T>
 
         return this.Queue1.First();
     }
+
+    public int Length()
+    {
+        return this.Queue1.Length();
+    }
     #endregion
 }

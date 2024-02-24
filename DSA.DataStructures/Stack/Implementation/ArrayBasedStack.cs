@@ -58,6 +58,11 @@ public class ArrayBasedStack<T> : IStackBase<T>
 
         return this.Stack[nTop];
     }
+
+    public int Length()
+    {
+        return nTop + 1;
+    }
     #endregion
 
     #region Privates
