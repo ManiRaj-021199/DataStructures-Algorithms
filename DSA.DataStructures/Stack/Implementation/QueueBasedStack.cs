@@ -10,22 +10,40 @@ public class QueueBasedStack<T> : IStackBase<T>
     #region Publics
     public void Push(T data)
     {
-        throw new NotImplementedException();
+        this.Queue2.Enqueue(data);
+
+        while(this.Queue1.Length() > 0)
+        {
+            data = this.Queue1.Dequeue();
+            this.Queue2.Enqueue(data);
+        }
+
+        (this.Queue2, this.Queue1) = (this.Queue1, this.Queue2);
     }
 
     public bool IsEmpty()
     {
-        throw new NotImplementedException();
+        return this.Queue1.Length() == 0;
     }
 
     public T Pop()
     {
-        throw new NotImplementedException();
+        if(this.Queue1.Length() == 0)
+        {
+            throw ThrowExceptionsHelper<T>.ThrowArgumentOutOfRangeException();
+        }
+
+        return this.Queue1.Dequeue();
     }
 
     public T Top()
     {
-        throw new NotImplementedException();
+        if (this.Queue1.Length() == 0)
+        {
+            throw ThrowExceptionsHelper<T>.ThrowArgumentOutOfRangeException();
+        }
+
+        return this.Queue1.First();
     }
     #endregion
 }

@@ -71,7 +71,7 @@ public class ArrayBasedQueue<T> : IQueueBase<T>
 
     public int Length()
     {
-        return nLength;
+        return nRearIndex + 1;
     }
     #endregion
 
