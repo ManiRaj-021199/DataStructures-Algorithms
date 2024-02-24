@@ -9,22 +9,43 @@ public class ListBasedQueue<T> : IListBasedQueue<T>
     #region Publics
     public void Enqueue(T data)
     {
-        throw new NotImplementedException();
+        this.Queue ??= new List<T>();
+
+        this.Queue.Add(data);
     }
 
     public T Dequeue()
     {
-        throw new NotImplementedException();
+        if(this.Queue == null)
+        {
+            throw ThrowExceptionsHelper<T>.ThrowArgumentOutOfRangeException();
+        }
+
+        T first = this.Queue[0];
+
+        this.Queue.RemoveAt(0);
+
+        return first;
     }
 
     public T First()
     {
-        throw new NotImplementedException();
+        if (this.Queue == null)
+        {
+            throw ThrowExceptionsHelper<T>.ThrowArgumentOutOfRangeException();
+        }
+
+        return this.Queue.First();
     }
 
     public T Last()
     {
-        throw new NotImplementedException();
+        if (this.Queue == null)
+        {
+            throw ThrowExceptionsHelper<T>.ThrowArgumentOutOfRangeException();
+        }
+
+        return this.Queue.Last();
     }
     #endregion
 }
