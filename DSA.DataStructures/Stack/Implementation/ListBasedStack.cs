@@ -39,5 +39,10 @@ public class ListBasedStack<T> : IStackBase<T>
 
         return this.Stack.Last();
     }
+
+    public int Length()
+    {
+        return this.Stack.Count;
+    }
     #endregion
 }

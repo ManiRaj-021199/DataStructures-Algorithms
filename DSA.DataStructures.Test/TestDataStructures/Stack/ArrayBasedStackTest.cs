@@ -114,5 +114,37 @@ public class ArrayBasedStackTest
 
         // Assert
     }
+
+    [TestMethod]
+    public void Test_Length_Success_Equal()
+    {
+        // Arrange
+        this.ArrayBasedStack.Push(1);
+        this.ArrayBasedStack.Push(2);
+        this.ArrayBasedStack.Push(3);
+        this.ArrayBasedStack.Push(4);
+
+        // Act
+        int nLength = this.ArrayBasedStack.Length();
+
+        // Assert
+        Assert.AreEqual(4, nLength);
+    }
+
+    [TestMethod]
+    public void Test_Length_Success_NotEqual()
+    {
+        // Arrange
+        this.ArrayBasedStack.Push(1);
+        this.ArrayBasedStack.Push(2);
+        this.ArrayBasedStack.Push(3);
+        this.ArrayBasedStack.Push(4);
+
+        // Act
+        int nLength = this.ArrayBasedStack.Length();
+
+        // Assert
+        Assert.AreNotEqual(3, nLength);
+    }
     #endregion
 }

@@ -24,4 +24,10 @@ public interface IStackBase<T>
     /// </summary>
     /// <returns>Top most element of the stack</returns>
     T Top();
+
+    /// <summary>
+    ///     Return the length of the stack.
+    /// </summary>
+    /// <returns>Length of the stack</returns>
+    int Length();
 }
