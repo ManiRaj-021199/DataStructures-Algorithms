@@ -4,7 +4,7 @@
 public class ArrayBasedStackTest
 {
     #region Properties
-    private IArrayBasedStack<int> ArrayBasedStack { get; set; } = null!;
+    private IStackBase<int> ArrayBasedStack { get; set; } = null!;
     #endregion
 
     #region Initialize and Cleanup

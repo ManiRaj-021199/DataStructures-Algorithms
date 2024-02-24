@@ -1,6 +1,6 @@
 ﻿namespace DSA.DataStructures;
 
-public class ArrayBasedStack<T> : IArrayBasedStack<T>
+public class ArrayBasedStack<T> : IStackBase<T>
 {
     #region Constants
     // Array growing count

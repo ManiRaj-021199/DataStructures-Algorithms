@@ -1,6 +1,6 @@
 ﻿namespace DSA.DataStructures;
 
-public class ListBasedStack<T> : IListBasedStack<T>
+public class ListBasedStack<T> : IStackBase<T>
 {
     #region Properties
     private List<T> Stack { get; set; } = new();

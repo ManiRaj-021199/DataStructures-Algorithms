@@ -1,6 +1,6 @@
 ﻿namespace DSA.DataStructures;
 
-public interface IArrayBasedQueue<T>
+public interface IQueueBase<T>
 {
     /// <summary>
     ///     Addition of a data to the queue.
@@ -25,4 +25,10 @@ public interface IArrayBasedQueue<T>
     /// </summary>
     /// <returns>Last data of the queue</returns>
     T Last();
+
+    /// <summary>
+    ///     Returns length of the queue.
+    /// </summary>
+    /// <returns>Length of the queue</returns>
+    int Length();
 }

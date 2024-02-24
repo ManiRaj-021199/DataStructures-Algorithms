@@ -1,17 +1,17 @@
 ﻿namespace DSA.DataStructures.Test;
 
 [TestClass]
-public class ListBasedStackTest
+public class QueueBasedStackTest
 {
     #region Properties
-    private IStackBase<int> ListBasedStack { get; set; } = null!;
+    private IStackBase<int> QueueBasedStack { get; set; } = null!;
     #endregion
 
     #region Initialize and Cleanup
     [TestInitialize]
     public void TestInitialize()
     {
-        this.ListBasedStack = new ListBasedStack<int>();
+        this.QueueBasedStack = new QueueBasedStack<int>();
     }
     #endregion
 
@@ -22,15 +22,15 @@ public class ListBasedStackTest
         // Arrange
 
         // Act
-        this.ListBasedStack.Push(1);
-        this.ListBasedStack.Push(2);
-        this.ListBasedStack.Push(3);
-        this.ListBasedStack.Push(4);
-        this.ListBasedStack.Push(5);
-        this.ListBasedStack.Push(6);
+        this.QueueBasedStack.Push(1);
+        this.QueueBasedStack.Push(2);
+        this.QueueBasedStack.Push(3);
+        this.QueueBasedStack.Push(4);
+        this.QueueBasedStack.Push(5);
+        this.QueueBasedStack.Push(6);
 
         // Assert
-        int nValue = this.ListBasedStack.Top();
+        int nValue = this.QueueBasedStack.Top();
 
         Assert.AreEqual(6, nValue);
     }
@@ -41,7 +41,7 @@ public class ListBasedStackTest
         // Arrange
 
         // Act
-        bool bIsEmpty = this.ListBasedStack.IsEmpty();
+        bool bIsEmpty = this.QueueBasedStack.IsEmpty();
 
         // Assert
         Assert.IsTrue(bIsEmpty);
@@ -51,10 +51,10 @@ public class ListBasedStackTest
     public void Test_IsEmpty_Success_NonEmptyStack()
     {
         // Arrange
-        this.ListBasedStack.Push(1);
+        this.QueueBasedStack.Push(1);
 
         // Act
-        bool bIsEmpty = this.ListBasedStack.IsEmpty();
+        bool bIsEmpty = this.QueueBasedStack.IsEmpty();
 
         // Assert
         Assert.IsFalse(bIsEmpty);
@@ -64,11 +64,11 @@ public class ListBasedStackTest
     public void Test_Pop_Success()
     {
         // Arrange
-        this.ListBasedStack.Push(1);
-        this.ListBasedStack.Push(2);
+        this.QueueBasedStack.Push(1);
+        this.QueueBasedStack.Push(2);
 
         // Act
-        int nValue = this.ListBasedStack.Pop();
+        int nValue = this.QueueBasedStack.Pop();
 
         // Assert
         Assert.AreEqual(2, nValue);
@@ -81,7 +81,7 @@ public class ListBasedStackTest
         // Arrange
 
         // Act
-        int nValue = this.ListBasedStack.Pop();
+        int nValue = this.QueueBasedStack.Pop();
 
         // Assert
         Assert.AreEqual(2, nValue);
@@ -91,13 +91,13 @@ public class ListBasedStackTest
     public void Test_Top_Success()
     {
         // Arrange
-        this.ListBasedStack.Push(1);
-        this.ListBasedStack.Push(2);
-        this.ListBasedStack.Push(3);
-        this.ListBasedStack.Push(4);
+        this.QueueBasedStack.Push(1);
+        this.QueueBasedStack.Push(2);
+        this.QueueBasedStack.Push(3);
+        this.QueueBasedStack.Push(4);
 
         // Act
-        int nValue = this.ListBasedStack.Top();
+        int nValue = this.QueueBasedStack.Top();
 
         // Assert
         Assert.AreEqual(4, nValue);
@@ -110,7 +110,7 @@ public class ListBasedStackTest
         // Arrange
 
         // Act
-        this.ListBasedStack.Top();
+        this.QueueBasedStack.Top();
 
         // Assert
     }
