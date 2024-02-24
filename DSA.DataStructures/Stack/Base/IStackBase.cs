@@ -1,6 +1,6 @@
 ﻿namespace DSA.DataStructures;
 
-public interface IArrayBasedStack<T>
+public interface IStackBase<T>
 {
     /// <summary>
     ///     Adds an element to the top of the stack.
