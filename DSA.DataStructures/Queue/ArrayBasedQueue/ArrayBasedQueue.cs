@@ -8,7 +8,7 @@ public class ArrayBasedQueue<T> : IArrayBasedQueue<T>
 
     #region Fields
     private int nFrontIndex = 0;
-    private int nRearIndex = 0;
+    private int nRearIndex = -1;
     private int nLength = 0;
     #endregion
 
@@ -19,7 +19,14 @@ public class ArrayBasedQueue<T> : IArrayBasedQueue<T>
     #region Publics
     public void Enqueue(T data)
     {
-        throw new NotImplementedException();
+        if(nRearIndex == nLength - 1)
+        {
+            this.Queue = ExtendQueue();
+        }
+
+        nRearIndex++;
+
+        this.Queue[nRearIndex] = data;
     }
 
     public T Dequeue()
@@ -27,9 +34,41 @@ public class ArrayBasedQueue<T> : IArrayBasedQueue<T>
         throw new NotImplementedException();
     }
 
-    public T Front()
+    public T First()
     {
-        throw new NotImplementedException();
+        if(nLength == 0)
+        {
+            throw ThrowExceptionsHelper<T>.ThrowArgumentOutOfRangeException();
+        }
+
+        return this.Queue[nFrontIndex];
+    }
+
+    public T Last()
+    {
+        if (nLength == 0)
+        {
+            throw ThrowExceptionsHelper<T>.ThrowArgumentOutOfRangeException();
+        }
+
+        return this.Queue[nRearIndex];
+    }
+    #endregion
+
+    #region Privates
+    private T[] ExtendQueue()
+    {
+        T[] queueNew = new T[nLength + BOUND];
+
+        // Copy the old stack data to new stack
+        for (int i = 0; i < nLength; i++)
+        {
+            queueNew[i] = this.Queue[i];
+        }
+
+        nLength += BOUND;
+
+        return queueNew;
     }
     #endregion
 }

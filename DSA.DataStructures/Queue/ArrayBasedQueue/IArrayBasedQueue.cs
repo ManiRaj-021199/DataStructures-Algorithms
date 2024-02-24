@@ -18,5 +18,11 @@ public interface IArrayBasedQueue<T>
     ///     Returns first data of the queue.
     /// </summary>
     /// <returns>First data of the queue</returns>
-    T Front();
+    T First();
+
+    /// <summary>
+    ///     Returns last data of the queue.
+    /// </summary>
+    /// <returns>Last data of the queue</returns>
+    T Last();
 }

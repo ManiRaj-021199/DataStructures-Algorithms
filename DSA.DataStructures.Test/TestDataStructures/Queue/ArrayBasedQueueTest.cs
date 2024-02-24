@@ -28,8 +28,8 @@ public class ArrayBasedQueueTest
         this.ArrayBasedQueue.Enqueue(6);
 
         // Act
-        int nFront = this.ArrayBasedQueue.Front();
-        int nLast = this.ArrayBasedQueue.Dequeue();
+        int nFront = this.ArrayBasedQueue.First();
+        int nLast = this.ArrayBasedQueue.Last();
 
         // Assert
         Assert.AreEqual(1, nFront);
@@ -70,7 +70,7 @@ public class ArrayBasedQueueTest
         this.ArrayBasedQueue.Enqueue(3);
 
         // Act
-        int nFront = this.ArrayBasedQueue.Front();
+        int nFront = this.ArrayBasedQueue.First();
 
         // Assert
         Assert.AreEqual(1, nFront);
@@ -83,7 +83,34 @@ public class ArrayBasedQueueTest
         // Arrange
         
         // Act
-        _ = this.ArrayBasedQueue.Front();
+        _ = this.ArrayBasedQueue.First();
+
+        // Assert
+    }
+
+    [TestMethod]
+    public void Test_Last_Success()
+    {
+        // Arrange
+        this.ArrayBasedQueue.Enqueue(1);
+        this.ArrayBasedQueue.Enqueue(2);
+        this.ArrayBasedQueue.Enqueue(3);
+
+        // Act
+        int nFront = this.ArrayBasedQueue.Last();
+
+        // Assert
+        Assert.AreEqual(3, nFront);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void Test_Last_OutOfRangeException()
+    {
+        // Arrange
+
+        // Act
+        _ = this.ArrayBasedQueue.Last();
 
         // Assert
     }
