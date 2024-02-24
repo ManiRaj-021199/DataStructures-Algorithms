@@ -4,7 +4,7 @@
 public class ArrayBasedQueueTest
 {
     #region Properties
-    private IArrayBasedQueue<int> ArrayBasedQueue { get; set; } = null!;
+    private IQueueBase<int> ArrayBasedQueue { get; set; } = null!;
     #endregion
 
     #region Initialize and Cleanup

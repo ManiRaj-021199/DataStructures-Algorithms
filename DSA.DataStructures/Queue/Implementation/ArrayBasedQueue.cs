@@ -1,6 +1,6 @@
 ﻿namespace DSA.DataStructures;
 
-public class ArrayBasedQueue<T> : IArrayBasedQueue<T>
+public class ArrayBasedQueue<T> : IQueueBase<T>
 {
     #region Constants
     private const int BOUND = 5;
@@ -67,6 +67,11 @@ public class ArrayBasedQueue<T> : IArrayBasedQueue<T>
         }
 
         return this.Queue[nRearIndex];
+    }
+
+    public int Length()
+    {
+        return nLength;
     }
     #endregion
 

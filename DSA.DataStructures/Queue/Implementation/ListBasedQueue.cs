@@ -1,6 +1,6 @@
 ﻿namespace DSA.DataStructures;
 
-public class ListBasedQueue<T> : IListBasedQueue<T>
+public class ListBasedQueue<T> : IQueueBase<T>
 {
     #region Properties
     private List<T> Queue { get; set; } = null!;
@@ -46,6 +46,11 @@ public class ListBasedQueue<T> : IListBasedQueue<T>
         }
 
         return this.Queue.Last();
+    }
+
+    public int Length()
+    {
+        return this.Queue.Count;
     }
     #endregion
 }

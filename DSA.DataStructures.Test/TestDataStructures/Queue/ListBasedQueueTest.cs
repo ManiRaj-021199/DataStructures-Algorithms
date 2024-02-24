@@ -4,7 +4,7 @@
 public class ListBasedQueueTest
 {
     #region Properties
-    private IListBasedQueue<int> ListBasedQueue { get; set; } = null!;
+    private IQueueBase<int> ListBasedQueue { get; set; } = null!;
     #endregion
 
     #region Initialize and Cleanup
@@ -118,6 +118,38 @@ public class ListBasedQueueTest
         _ = this.ListBasedQueue.Last();
 
         // Assert
+    }
+
+    [TestMethod]
+    public void Test_Length_Success_Equal()
+    {
+        // Arrange
+        this.ListBasedQueue.Enqueue(1);
+        this.ListBasedQueue.Enqueue(2);
+        this.ListBasedQueue.Enqueue(3);
+        this.ListBasedQueue.Enqueue(4);
+
+        // Act
+        int nLength = this.ListBasedQueue.Length();
+
+        // Assert
+        Assert.AreEqual(4, nLength);
+    }
+
+    [TestMethod]
+    public void Test_Length_Success_NotEqual()
+    {
+        // Arrange
+        this.ListBasedQueue.Enqueue(1);
+        this.ListBasedQueue.Enqueue(2);
+        this.ListBasedQueue.Enqueue(3);
+        this.ListBasedQueue.Enqueue(4);
+
+        // Act
+        int nLength = this.ListBasedQueue.Length();
+
+        // Assert
+        Assert.AreNotEqual(3, nLength);
     }
     #endregion
 }
