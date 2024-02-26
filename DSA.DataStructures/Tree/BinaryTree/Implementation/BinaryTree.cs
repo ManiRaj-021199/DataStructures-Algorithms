@@ -66,9 +66,60 @@ public class BinaryTree<T> : ITreeBase<T>
         return node;
     }
 
-    public BinaryTreeNode<T> Remove(T item)
+    public BinaryTreeNode<T>? Remove(T item)
     {
-        throw new NotImplementedException();
+        BinaryTreeNode<T>? nodeTemp = this.Root;
+
+        if (nodeTemp is null)
+        {
+            return default;
+        }
+
+        if (nodeTemp.Left is null && nodeTemp.Right is null)
+        {
+            if(nodeTemp.TData?.Equals(item) == true)
+            {
+                this.Root = default;
+            }
+
+            return default;
+        }
+
+        ListBasedQueue<BinaryTreeNode<T>> queue = new();
+        queue.Enqueue(nodeTemp);
+
+        BinaryTreeNode<T>? nodeKey = default;
+
+        while (queue.Length() != 0)
+        {
+            nodeTemp = queue.Dequeue();
+
+            if (nodeTemp.TData?.Equals(item) == true)
+            {
+                nodeKey = nodeTemp;
+            }
+
+            if (nodeTemp.Left is not null)
+            {
+                queue.Enqueue(nodeTemp.Left);
+            }
+
+            if (nodeTemp.Right is not null)
+            {
+                queue.Enqueue(nodeTemp.Right);
+            }
+        }
+
+        if (nodeKey is not null)
+        {
+            T data = nodeTemp.TData;
+
+            DeleteDeepestNode(nodeKey);
+
+            nodeKey.TData = data;
+        }
+
+        return nodeKey;
     }
 
     public BinaryTreeNode<T>? Find(T item)
@@ -114,6 +165,52 @@ public class BinaryTree<T> : ITreeBase<T>
     public string RecursiveLevelorderTraversal()
     {
         throw new NotImplementedException();
+    }
+    #endregion
+
+    #region Privates
+    private void DeleteDeepestNode(BinaryTreeNode<T> nodeNeedToDelete)
+    {
+        if (this.Root is null) return;
+
+        ListBasedQueue<BinaryTreeNode<T>> queue = new();
+        queue.Enqueue(this.Root);
+
+        while (queue.Length() != 0)
+        {
+            BinaryTreeNode<T>? nodeTemp = queue.Dequeue();
+            if (nodeTemp == nodeNeedToDelete)
+            {
+                nodeTemp = default;
+                return;
+            }
+
+            if (nodeTemp.Left != null)
+            {
+                if (nodeTemp.Left == nodeNeedToDelete)
+                {
+                    nodeTemp.Left = default;
+                    return;
+                }
+                else
+                {
+                    queue.Enqueue(nodeTemp.Left);
+                }
+            }
+
+            if (nodeTemp.Right != null)
+            {
+                if (nodeTemp.Right == nodeNeedToDelete)
+                {
+                    nodeTemp.Right = default;
+                    return;
+                }
+                else
+                {
+                    queue.Enqueue(nodeTemp.Right);
+                }
+            }
+        }
     }
     #endregion
 }

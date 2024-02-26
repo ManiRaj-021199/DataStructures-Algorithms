@@ -32,7 +32,7 @@ public interface ITreeBase<T>
     /// </summary>
     /// <param name="item">Item need to remove from the tree</param>
     /// <returns>Removed item</returns>
-    BinaryTreeNode<T> Remove(T item);
+    BinaryTreeNode<T>? Remove(T item);
 
     /// <summary>
     ///     Find an element from the tree
