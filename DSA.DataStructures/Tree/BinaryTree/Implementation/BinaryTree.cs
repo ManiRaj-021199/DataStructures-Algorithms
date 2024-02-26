@@ -2,6 +2,10 @@
 
 public class BinaryTree<T> : ITreeBase<T>
 {
+    #region Properties
+    private BinaryTreeNode<T>? Root { get; set; }
+    #endregion
+
     #region Publics
     public int Height()
     {
@@ -20,7 +24,46 @@ public class BinaryTree<T> : ITreeBase<T>
 
     public BinaryTreeNode<T> Insert(T item)
     {
-        throw new NotImplementedException();
+        BinaryTreeNode<T>? nodeTemp = this.Root;
+        BinaryTreeNode<T> node = new BinaryTreeNode<T>(item);
+
+        if (nodeTemp is null)
+        {
+            this.Root = node;
+
+            return this.Root;
+        }
+
+        ListBasedQueue<BinaryTreeNode<T>> queue = new();
+        queue.Enqueue(nodeTemp);
+
+        // Level order travel to get an empty space
+        while(queue.Length() != 0)
+        {
+            nodeTemp = queue.Dequeue();
+
+            if (nodeTemp.Left is null)
+            {
+                nodeTemp.Left = node;
+                break;
+            }
+            else
+            {
+                queue.Enqueue(nodeTemp.Left);
+            }
+
+            if (nodeTemp.Right is null)
+            {
+                nodeTemp.Right = node;
+                break;
+            }
+            else
+            {
+                queue.Enqueue(nodeTemp.Right);
+            }
+        }
+
+        return node;
     }
 
     public BinaryTreeNode<T> Remove(T item)

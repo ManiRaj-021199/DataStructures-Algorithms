@@ -3,9 +3,9 @@
 public class BinaryTreeNode<T>
 {
     #region Properties
-    T TData { get; set; } = default!;
-    BinaryTreeNode<T>? Left { get; set; } = null;
-    BinaryTreeNode<T>? Right { get; set; } = null;
+    public T TData { get; set; } = default!;
+    public BinaryTreeNode<T>? Left { get; set; } = null;
+    public BinaryTreeNode<T>? Right { get; set; } = null;
     #endregion
 
     #region Constructors
