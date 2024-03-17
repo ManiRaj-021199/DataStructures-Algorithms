@@ -25,21 +25,21 @@ public interface ITreeBase<T>
     /// </summary>
     /// <param name="item">Item need to insert into the tree</param>
     /// <returns>Inserted item</returns>
-    BinaryTreeNode<T> Insert(T item);
+    TreeNode<T> Insert(T item);
 
     /// <summary>
     ///     Remove an element from the tree.
     /// </summary>
     /// <param name="item">Item need to remove from the tree</param>
     /// <returns>Removed item</returns>
-    BinaryTreeNode<T>? Remove(T item);
+    TreeNode<T>? Remove(T item);
 
     /// <summary>
     ///     Find an element from the tree
     /// </summary>
     /// <param name="item">Item need to find from the tree</param>
     /// <returns>Null if the item was not in the tree else the node</returns>
-    BinaryTreeNode<T>? Find(T item);
+    TreeNode<T>? Find(T item);
 
     /// <summary>
     ///     Inorder traversal in iterative approach.

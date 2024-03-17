@@ -1,15 +1,15 @@
 ﻿namespace DSA.Common;
 
-public class BinaryTreeNode<T>
+public class TreeNode<T>
 {
     #region Properties
     public T TData { get; set; } = default!;
-    public BinaryTreeNode<T>? Left { get; set; } = null;
-    public BinaryTreeNode<T>? Right { get; set; } = null;
+    public TreeNode<T>? Left { get; set; } = null;
+    public TreeNode<T>? Right { get; set; } = null;
     #endregion
 
     #region Constructors
-    public BinaryTreeNode(T data)
+    public TreeNode(T data)
     {
         this.TData = data;
         this.Left = null;

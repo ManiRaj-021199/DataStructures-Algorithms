@@ -1,6 +1,6 @@
 ﻿namespace DSA.DataStructures;
 
-public class BinaryTree<T> : ITreeBase<T>
+public class BinarySearchTree<T> : ITreeBase<T>
 {
     #region Properties
     private TreeNode<T>? Root { get; set; }
@@ -24,42 +24,7 @@ public class BinaryTree<T> : ITreeBase<T>
 
     public TreeNode<T> Insert(T item)
     {
-        TreeNode<T>? nodeTemp = this.Root;
-        TreeNode<T> node = new(item);
-
-        if(nodeTemp is null)
-        {
-            this.Root = node;
-
-            return this.Root;
-        }
-
-        ListBasedQueue<TreeNode<T>> queue = new();
-        queue.Enqueue(nodeTemp);
-
-        // Level order travel to get an empty space
-        while(queue.Length() != 0)
-        {
-            nodeTemp = queue.Dequeue();
-
-            if(nodeTemp.Left is null)
-            {
-                nodeTemp.Left = node;
-                break;
-            }
-
-            queue.Enqueue(nodeTemp.Left);
-
-            if(nodeTemp.Right is null)
-            {
-                nodeTemp.Right = node;
-                break;
-            }
-
-            queue.Enqueue(nodeTemp.Right);
-        }
-
-        return node;
+        throw new NotImplementedException();
     }
 
     public TreeNode<T> Remove(T item)
